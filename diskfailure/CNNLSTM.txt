@@ -1,0 +1,79 @@
+'''
+想着把lr改下 改成动态的先大后小
+没加sample
+lr = 0.1
+
+epoch 1, loss 1.4176, train acc 0.665, time 1.2 sec
+epoch 2, loss 0.9477, train acc 0.697, time 1.0 sec
+epoch 3, loss 0.9734, train acc 0.693, time 1.0 sec
+epoch 4, loss 0.9874, train acc 0.702, time 1.0 sec
+epoch 5, loss 0.9754, train acc 0.690, time 1.0 sec
+epoch 6, loss 1.0206, train acc 0.702, time 1.0 sec
+epoch 7, loss 0.9791, train acc 0.689, time 1.0 sec
+epoch 8, loss 1.0209, train acc 0.708, time 1.0 sec
+epoch 9, loss 0.9786, train acc 0.681, time 1.0 sec
+epoch 10, loss 1.0222, train acc 0.693, time 1.0 sec
+epoch 11, loss 0.9810, train acc 0.689, time 1.0 sec
+epoch 12, loss 1.0190, train acc 0.708, time 1.0 sec
+epoch 13, loss 0.9810, train acc 0.689, time 1.0 sec
+epoch 14, loss 1.0219, train acc 0.693, time 1.0 sec
+epoch 15, loss 0.9802, train acc 0.689, time 1.0 sec
+epoch 16, loss 1.0215, train acc 0.702, time 1.0 sec
+epoch 17, loss 0.9790, train acc 0.681, time 1.0 sec
+epoch 18, loss 1.0227, train acc 0.693, time 1.0 sec
+epoch 19, loss 0.9811, train acc 0.689, time 1.0 sec
+epoch 20, loss 1.0204, train acc 0.708, time 1.0 sec
+'''
+
+'''
+有sampler
+lr = 0.1
+
+epoch 1, loss 0.8559, train acc 0.494, time 1.3 sec
+epoch 2, loss 0.7647, train acc 0.488, time 1.0 sec
+epoch 3, loss 0.7512, train acc 0.489, time 1.0 sec
+epoch 4, loss 0.7710, train acc 0.494, time 1.0 sec
+epoch 5, loss 0.7881, train acc 0.480, time 1.0 sec
+epoch 6, loss 0.7319, train acc 0.486, time 1.1 sec
+epoch 7, loss 0.7211, train acc 0.533, time 1.0 sec
+epoch 8, loss 0.7575, train acc 0.500, time 1.0 sec
+epoch 9, loss 0.7808, train acc 0.514, time 1.0 sec
+epoch 10, loss 0.7439, train acc 0.516, time 1.0 sec
+epoch 11, loss 0.7556, train acc 0.500, time 1.0 sec
+epoch 12, loss 0.7685, train acc 0.486, time 1.0 sec
+epoch 13, loss 0.7558, train acc 0.492, time 1.0 sec
+epoch 14, loss 0.7480, train acc 0.515, time 1.0 sec
+epoch 15, loss 0.7659, train acc 0.479, time 1.0 sec
+epoch 16, loss 0.7547, train acc 0.490, time 1.0 sec
+epoch 17, loss 0.7704, train acc 0.497, time 1.0 sec
+epoch 18, loss 0.7923, train acc 0.479, time 1.0 sec
+epoch 19, loss 0.8775, train acc 0.498, time 1.0 sec
+epoch 20, loss 0.7798, train acc 0.529, time 1.0 sec
+'''
+
+'''
+有sampler
+lr = 0.01
+
+
+epoch 1, loss 0.6995, train acc 0.521, time 1.2 sec
+epoch 2, loss 0.6958, train acc 0.471, time 1.0 sec
+epoch 3, loss 0.6931, train acc 0.525, time 1.0 sec
+epoch 4, loss 0.6915, train acc 0.533, time 1.0 sec
+epoch 5, loss 0.6946, train acc 0.490, time 1.0 sec
+epoch 6, loss 0.6938, train acc 0.489, time 1.0 sec
+epoch 7, loss 0.6932, train acc 0.504, time 1.0 sec
+epoch 8, loss 0.6950, train acc 0.492, time 1.0 sec
+epoch 9, loss 0.6921, train acc 0.529, time 1.0 sec
+epoch 10, loss 0.6939, train acc 0.507, time 1.0 sec
+epoch 11, loss 0.6950, train acc 0.500, time 1.0 sec
+epoch 12, loss 0.6935, train acc 0.508, time 1.0 sec
+epoch 13, loss 0.6942, train acc 0.502, time 1.0 sec
+epoch 14, loss 0.6934, train acc 0.506, time 1.0 sec
+epoch 15, loss 0.6946, train acc 0.484, time 1.0 sec
+epoch 16, loss 0.6931, train acc 0.515, time 1.0 sec
+epoch 17, loss 0.6948, train acc 0.491, time 1.0 sec
+epoch 18, loss 0.6940, train acc 0.494, time 1.0 sec
+epoch 19, loss 0.6945, train acc 0.493, time 1.0 sec
+epoch 20, loss 0.6944, train acc 0.496, time 1.0 sec
+'''
