@@ -20,7 +20,7 @@ from torch.utils.data import DataLoader, Dataset, WeightedRandomSampler
 from torch.optim import lr_scheduler
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-#只有LSTM 时间步模式为【1-7】【2-8】
+
 
 def mySample(data):
     num = 0
@@ -73,64 +73,51 @@ train_set = MyData(train_data, 7, 6)
 sampler = mySample(train_set)
 train_iter = DataLoader(MyData(train_data, 7, 6), batch_size = 10, drop_last=True)
 
-class CNNLSTM(nn.Module):
 
-    def __init__(self): 
-        super(CNNLSTM, self).__init__()
-        self.conv1 = nn.Conv1d(in_channels = 13, out_channels = 128, kernel_size = 4) # 要求转置
-        self.lstmlayer = nn.LSTM(input_size=128, hidden_size=128, num_layers=2, batch_first=True)
+class myLSTM(nn.Module):
+
+    def __init__(self):
+        super(myLSTM, self).__init__()
+
+        self.lstmlayer = nn.LSTM(input_size=13, hidden_size=128, num_layers=1, batch_first=True)
         self.linear = nn.Linear(128, 2)
     def forward(self, X, state):
-        pad = nn.ZeroPad2d(padding=(2, 1, 0, 0))
-        X = X.permute(0, 2, 1)
-        X = pad(X)
-        X = self.conv1(X)
-        X =  X.permute(0, 2, 1) 
-        #X = X.reshape(7, 10, -1)
         X, (H, C) = self.lstmlayer(X, state)
         X = X[:, X.size(1) - 1, :]
         x = torch.sigmoid(X)
         X = self.linear(X)
         return X, (H, C)
 
-def train(net, train_iter, optimizer, scheduler, num_epochs):
+
+def train(net, train_iter, optimizer, num_epochs):
     print("training start")
     loss = torch.nn.CrossEntropyLoss()
-    state = None
     for epoch in range(num_epochs):
         train_l_sum, train_acc_sum, n, batch_count, start = 0.0, 0.0, 0, 0, time.time()
+        state = None
         for X, y in train_iter:
             if state is not None:
                 if isinstance (state, tuple): # LSTM, state:(h, c)  
                     state = (state[0].detach(), state[1].detach())
                 else:   
                     state = state.detach()
-            #X = X.to(device) 
-            #y = y.to(device)
-            #y = y.long()
-            y_hat, state = net(X.float().cuda(), state)
-            #y_hat = y_hat.to(device)
-            #y_hat = y_hat.reshape(-1, 2)
-            y = y.reshape(-1).cuda( ).long()
-            l = loss(y_hat, y)
+            y_hat, state = net(X.float(), state)
+            y = y.reshape(-1)
+            l = loss(y_hat, y.long())
             optimizer.zero_grad()
             l.backward()
             optimizer.step()
-            scheduler.step( )
             train_l_sum += l.cpu().item()
             train_acc_sum += (y_hat.argmax(dim=1) == y).sum().cpu().item()
             n += y.shape[0]
             batch_count += 1
         print('epoch %d, loss %.4f, train acc %.3f, time %.1f sec'
         % (epoch + 1, train_l_sum / batch_count, train_acc_sum / n, time.time() - start))
-        
+    
 
-net = CNNLSTM()
-net = net.to(device)
-net = torch.nn.DataParallel(net)
-lr, num_epochs = 0.1, 20
+net = myLSTM()
+
+lr, num_epochs = 0.001, 20
 optimizer = torch.optim.Adam(net.parameters(), lr=lr)
-scheduler = lr_scheduler.StepLR(optimizer, step_size=4, gamma=0.1)
 
-train(net, train_iter, optimizer, scheduler, num_epochs)
-
+train(net, train_iter, optimizer, num_epochs)

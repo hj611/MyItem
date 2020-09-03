@@ -1,0 +1,21 @@
+training start
+epoch 1, loss 0.0425, train acc 0.994, time 5.2 sec
+epoch 2, loss 0.0364, train acc 0.994, time 5.2 sec
+epoch 3, loss 0.0364, train acc 0.994, time 5.2 sec
+epoch 4, loss 0.0364, train acc 0.994, time 5.2 sec
+epoch 5, loss 0.0363, train acc 0.994, time 5.2 sec
+epoch 6, loss 0.0363, train acc 0.994, time 5.2 sec
+epoch 7, loss 0.0362, train acc 0.994, time 5.2 sec
+epoch 8, loss 0.0362, train acc 0.994, time 5.2 sec
+epoch 9, loss 0.0362, train acc 0.994, time 5.2 sec
+epoch 10, loss 0.0362, train acc 0.994, time 5.2 sec
+epoch 11, loss 0.0361, train acc 0.994, time 5.2 sec
+epoch 12, loss 0.0361, train acc 0.994, time 5.2 sec
+epoch 13, loss 0.0361, train acc 0.994, time 5.2 sec
+epoch 14, loss 0.0361, train acc 0.994, time 5.2 sec
+epoch 15, loss 0.0361, train acc 0.994, time 5.2 sec
+epoch 16, loss 0.0360, train acc 0.994, time 5.2 sec
+epoch 17, loss 0.0360, train acc 0.994, time 5.2 sec
+epoch 18, loss 0.0360, train acc 0.994, time 5.2 sec
+epoch 19, loss 0.0360, train acc 0.994, time 5.2 sec
+epoch 20, loss 0.0360, train acc 0.994, time 5.2 sec

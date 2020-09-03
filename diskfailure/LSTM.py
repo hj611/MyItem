@@ -18,10 +18,13 @@ import numpy as np
 import pandas as pd
 from torch.utils.data import DataLoader, Dataset
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-train = pd.read_csv('E:/LSTM_5_1/train_2018_1_model_2.csv')
+train_data = pd.read_csv('F:/data/train_2018Q1_model_2.csv')
+
+#只有LSTM 时间步为1
+
 class MyData(Dataset):
     def __init__(self, train_data):
-        self.value = train_data.iloc[:, 5:-1].values
+        self.value = train_data.iloc[:, 6:-1].values
         max = np.max(self.value)
         min = np.min(self.value) 
         scalar = max - min 
@@ -34,7 +37,7 @@ class MyData(Dataset):
         return data, self.label[idx]
 
 
-train_iter = DataLoader(MyData(train), batch_size = 10)
+train_iter = DataLoader(MyData(train_data), batch_size = 10)
 
 class myLSTM(nn.Module):
 
@@ -56,11 +59,9 @@ def train(net, train_iter, optimizer, num_epochs):
     for epoch in range(num_epochs):
         train_l_sum, train_acc_sum, n, batch_count, start = 0.0, 0.0, 0, 0, time.time()
         for X, y in train_iter:
-            print('y ', y.shape)
             X = X.to(device) 
             y = y.to(device)
             y_hat = net(X.float())
-            print('y_hat ', y_hat.shape)
             y_hat = y_hat.reshape(-1, 2)
             l = loss(y_hat, y)
             optimizer.zero_grad()
