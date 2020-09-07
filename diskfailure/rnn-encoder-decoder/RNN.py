@@ -32,7 +32,7 @@ class RNN(object):
             _, softmax, hidden_state = self.decoder.forward(target[i], hidden_state)
 
             outputs.append(np.argmax(softmax.data.numpy(), 1)[:, np.newaxis])
-            total_loss += self.loss(softmax, target[i + 1].squeeze(1))
+            total_loss += self.loss(softmax, target[i].squeeze(1))
 
         total_loss /= len(outputs)
         total_loss.backward()
