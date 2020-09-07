@@ -21,7 +21,7 @@ from torch.optim import lr_scheduler
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 
-
+# x[1-7] y[8-14]
 def mySample(data):
     num = 0
     total = len(train_set)
@@ -58,7 +58,7 @@ class MyData(Dataset):
             self.datalabel = traindata_name.loc[:, 'label'].values.tolist()
             for i in range(len(traindata_name) - numstep):
                 self.input.append(torch.Tensor(self.datas[i: i + numstep]))
-                if(torch.Tensor(self.datalabel[i: i + numstep]).sum() != 0):
+                if(torch.Tensor(self.datalabel[i + numstep: i + numstep + numstep]).sum() != 0):
                     self.label.append(torch.ones(1))
                 else:
                     self.label.append(torch.zeros(1))
@@ -71,7 +71,7 @@ class MyData(Dataset):
 train_data = pd.read_csv('F:/data/train_2018Q1_model_2.csv')
 train_set = MyData(train_data, 7, 6)
 sampler = mySample(train_set)
-train_iter = DataLoader(MyData(train_data, 7, 6), batch_size = 10, drop_last=True)
+train_iter = DataLoader(MyData(train_data, 7, 6), batch_size = 128, drop_last=True)
 
 
 class myLSTM(nn.Module):
@@ -79,7 +79,7 @@ class myLSTM(nn.Module):
     def __init__(self):
         super(myLSTM, self).__init__()
 
-        self.lstmlayer = nn.LSTM(input_size=13, hidden_size=128, num_layers=1, batch_first=True)
+        self.lstmlayer = nn.LSTM(input_size=21, hidden_size=128, num_layers=1, batch_first=True)
         self.linear = nn.Linear(128, 2)
     def forward(self, X, state):
         X, (H, C) = self.lstmlayer(X, state)

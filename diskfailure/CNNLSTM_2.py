@@ -20,7 +20,7 @@ from torch.utils.data import DataLoader, Dataset, WeightedRandomSampler
 from torch.optim import lr_scheduler
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-#只有LSTM 时间步模式为【1-7】【2-8】
+#时间步模式为【1-7】【2-8】
 
 def mySample(data):
     num = 0

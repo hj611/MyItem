@@ -19,3 +19,27 @@ epoch 17, loss 0.0285, train acc 0.996, time 10.3 sec
 epoch 18, loss 0.0285, train acc 0.996, time 10.3 sec
 epoch 19, loss 0.0285, train acc 0.996, time 10.3 sec
 epoch 20, loss 0.0285, train acc 0.996, time 10.4 sec
+
+
+#700M 2020/9/7
+
+training start
+epoch 1, loss 0.0093, train acc 0.999, time 4011.5 sec
+epoch 2, loss 0.0089, train acc 0.999, time 5564.2 sec
+epoch 3, loss 0.0089, train acc 0.999, time 5689.4 sec
+epoch 4, loss 0.0089, train acc 0.999, time 5659.6 sec
+epoch 5, loss 0.0089, train acc 0.999, time 3070.2 sec
+epoch 6, loss 0.0088, train acc 0.999, time 1912.1 sec
+epoch 7, loss 0.0088, train acc 0.999, time 1926.7 sec
+epoch 8, loss 0.0088, train acc 0.999, time 1931.6 sec
+epoch 9, loss 0.0088, train acc 0.999, time 1931.3 sec
+epoch 10, loss 0.0088, train acc 0.999, time 1924.6 sec
+epoch 11, loss 0.0088, train acc 0.999, time 1927.5 sec
+epoch 12, loss 0.0088, train acc 0.999, time 1920.6 sec
+epoch 13, loss 0.0088, train acc 0.999, time 1925.5 sec
+epoch 14, loss 0.0088, train acc 0.999, time 1923.4 sec
+epoch 15, loss 0.0088, train acc 0.999, time 1929.7 sec
+epoch 16, loss 0.0088, train acc 0.999, time 1930.2 sec
+epoch 17, loss 0.0088, train acc 0.999, time 1929.5 sec
+epoch 18, loss 0.0088, train acc 0.999, time 1930.3 sec
+epoch 19, loss 0.0088, train acc 0.999, time 1925.3 sec
