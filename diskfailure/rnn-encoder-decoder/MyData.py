@@ -39,7 +39,7 @@ class MyData(Dataset):
             self.datalabel = traindata_name.loc[:, 'label'].values.tolist()
             for i in range(len(traindata_name) - numstep):
                 self.input.append(torch.Tensor(self.datas[i: i + numstep]))
-                if(torch.Tensor(self.datalabel[i + numstep: i + numstep + numstep]).sum() != 0):
+                if(torch.Tensor(self.datalabel[i: i + numstep]).sum() != 0):
                     self.label.append(torch.ones(1))
                 else:
                     self.label.append(torch.zeros(1))

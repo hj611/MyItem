@@ -8,6 +8,29 @@ import pandas as pd
 import MyData
 import torch.nn as nn
 
+
+import collections
+import math
+import os
+import random
+import sys
+import tarfile
+import time
+import json
+from collections import namedtuple
+import torch
+from torch import nn
+import torch.nn.functional as F
+import torchvision
+import torchvision.transforms as transforms
+import torchtext
+import torchtext.vocab as Vocab
+import numpy as np
+import pandas as pd
+from torch.utils.data import DataLoader, Dataset, WeightedRandomSampler
+from torch.optim import lr_scheduler
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
 class MyData(Dataset):
     def __init__(self, traindata, numstep, length):
         self.serial_number = traindata['serial_number'].value_counts()
@@ -40,8 +63,10 @@ train_data = pd.read_csv('F:/data/train_2018Q1_model_2.csv')
 data = MyData(train_data, 7, 6)
 train_iter = DataLoader(data, batch_size = 10, drop_last=True)
 
+encoder = Encoder(13)
 
+lstm = nn.LSTM(input_size=13, hidden_size=128, num_layers=2, batch_first=True)
 
-for i, batch in enumerate(train_iter):
-    print(batch.shape)
+for X, y in train_iter:
+    print(lstm(X.float(), None))
     break

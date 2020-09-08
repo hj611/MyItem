@@ -1,6 +1,5 @@
-from RNN import *
+import RNN
 from MyData import *
-
 import utils
 import collections
 import math
@@ -43,7 +42,7 @@ def main():
         for i, batch in enumerate(train_iter):
             input, target = batch
 
-            loss, outputs = rnn.train(Variable(input.long()), Variable(target.long()))
+            loss, outputs = rnn.train(Variable(input.float()), Variable(target.float()))
             losses.append(loss)
 
             if i % 100 is 0:
