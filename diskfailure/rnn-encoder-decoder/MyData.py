@@ -30,7 +30,7 @@ class MyData(Dataset):
         min = np.min(self.value)
         scalar = max - min 
         self.datas = list(map(lambda x: x / scalar, self.value))
-        self.datalabel = train_data.loc[:, 'label'].values.tolist()
+        self.datalabel = traindata.loc[:, 'label'].values.tolist()
         self.input = []
         self.label = []
 

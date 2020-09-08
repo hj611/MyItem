@@ -1,6 +1,7 @@
 from RNN import *
-from MyData import 
+from MyData import *
 
+import utils
 import collections
 import math
 import os
@@ -32,8 +33,21 @@ length = 6
 
 def main():
     data = MyData(train_data, numstep, length)
-    sampler = mySample(data)
-    train_iter = DataLoader(data, batch_size = 128, drop_last=True, sampler=sampler)
+    sampler = utils.mySample(data)
+    train_iter = DataLoader(data, batch_size = 10, drop_last=True, sampler=sampler)
+    rnn = RNN(13)
 
     losses = []
-    for epoch in range(num_epochs)
+    for epoch in range(num_epochs):
+        print("=" * 50 + (" EPOCH %i " % epoch) + "=" * 50)
+        for i, batch in enumerate(train_iter):
+            input, target = batch
+
+            loss, outputs = rnn.train(Variable(input.long()), Variable(target.long()))
+            losses.append(loss)
+
+            if i % 100 is 0:
+                print("Loss at step %d: %.2f" % (i, loss))
+                #print("Truth: \"%s\"" % data.vec_to_sentence(target))
+
+main()

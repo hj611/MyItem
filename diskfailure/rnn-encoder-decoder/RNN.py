@@ -6,24 +6,24 @@ from torch.autograd import Variable
 import torch
 
 class RNN(object):
-    def __init__(self, input_size, output_size):
+    def __init__(self, input_size):
         super(RNN, self).__init__()
 
         self.encoder = Encoder(input_size)
-        self.decoder = Decoder(output_size)
+        self.decoder = Decoder()
 
         self.loss = nn.CrossEntropyLoss()
-        self.encoder_optimizer = optim.Adam(self.encoder.parameters())
-        self.decoder_optimizer = optim.Adam(self.decoder.parameters())
+        self.encoder_optimizer = optim.Adam(self.encoder.parameters(), lr = 0.1)
+        self.decoder_optimizer = optim.Adam(self.decoder.parameters(), lr = 0.1)
 
     def train(self, input, target):
         self.encoder_optimizer.zero_grad()
         self.decoder_optimizer.zero_grad()
 
         #Encoder
-        hidden_state = self.encoder.first_hidden()
-        for ivec in input:
-            _, hidden_state = self.encoder.forward(ivec, hidden_state)
+        #hidden_state = self.encoder.first_hidden()
+        
+         _, hidden_state = self.encoder.forward(input, None)
 
 
         #Decoder
