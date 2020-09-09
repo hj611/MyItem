@@ -9,8 +9,8 @@ class Encoder(nn.Module):
         self.LSTM = nn.LSTM(input_size, hidden_size, num_layers= 1, batch_first=True)
 
     def forward(self, input, hidden):
-        print(input.shape)
-        output, hidden_state = self.LSTM(input, hidden)
+        print("Encoder", input.shape)
+        output, hidden_state = self.LSTM(input.float(), hidden)
         return output, hidden_state
     
     def first_hidden(self):

@@ -12,7 +12,7 @@ class Decoder(nn.Module):
         self.softmax = nn.Softmax()
     
     def forward(self, input, hidden):
-        output, hidden_state = self.LSTM(input)
+        output, hidden_state = self.LSTM(input.float())
         liner = self.liner(hidden_state[0].squeeze(0))
         softmax = self.softmax(liner)
         return output, softmax, hidden_state
