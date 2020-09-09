@@ -38,15 +38,20 @@ def main():
 
     losses = []
     for epoch in range(num_epochs):
-        print("=" * 50 + (" EPOCH %i " % epoch) + "=" * 50)
+        train_l_sum, train_acc_sum, n, batch_count, start = 0.0, 0.0, 0, 0, time.time()
+        #print("=" * 50 + (" EPOCH %i " % epoch) + "=" * 50)
         for i, batch in enumerate(train_iter):
             input, target = batch
 
-            loss, outputs = rnn.train(input, target.long())
-            losses.append(loss)
+            loss, outputs, acc_sum = rnn.train(input, target)
+            train_l_sum += loss
+            train_acc_sum += acc_sum
+            n += target.shape[0]
+            batch_count += 1
 
-            if i % 100 is 0:
-                print("Loss at step %d: %.2f" % (i, loss))
-                #print("Truth: \"%s\"" % data.vec_to_sentence(target))
+        print(batch_count)
+        print(train_l_sum)
+        print('epoch %d, loss %.4f, train acc %.3f, time %.1f sec'
+        % (epoch + 1, train_l_sum / batch_count, train_acc_sum / n, time.time() - start))
 
 main()

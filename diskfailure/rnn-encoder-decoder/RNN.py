@@ -27,17 +27,19 @@ class RNN(object):
 
 
         #Decoder
+        #softmax batch * 2
         total_loss, outputs = 0, []  
 
         _, softmax, hidden_state = self.decoder.forward(input, hidden_state)
-        total_loss = self.loss(softmax.long(), target.long())
+        total_loss = self.loss(softmax, target.squeeze(1).long())
         total_loss.backward()
-        
+
+        acc_sum = (softmax.argmax(dim=1) == target.squeeze(1)).sum().item()
 
         self.decoder_optimizer.step()
         self.encoder_optimizer.step()
 
-        return total_loss.data[0], outputs
+        return total_loss.item(), outputs, acc_sum
 
 def eval(self, input):
         hidden_state = self.encoder.first_hidden()
