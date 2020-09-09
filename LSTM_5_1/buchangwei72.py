@@ -119,6 +119,7 @@ def train(net, train_iter, optimizer, scheduler, num_epochs):
             train_acc_sum += (y_hat.argmax(dim=1) == y).sum().cpu().item()
             n += y.shape[0]
             batch_count += 1
+        print(batch_count)
         print('epoch %d, loss %.4f, train acc %.3f, time %.1f sec'
         % (epoch + 1, train_l_sum / batch_count, train_acc_sum / n, time.time() - start))
         

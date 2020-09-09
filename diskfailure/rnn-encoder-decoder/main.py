@@ -49,8 +49,7 @@ def main():
             n += target.shape[0]
             batch_count += 1
 
-        print(batch_count)
-        print(train_l_sum)
+
         print('epoch %d, loss %.4f, train acc %.3f, time %.1f sec'
         % (epoch + 1, train_l_sum / batch_count, train_acc_sum / n, time.time() - start))
 
