@@ -42,7 +42,7 @@ def main():
         for i, batch in enumerate(train_iter):
             input, target = batch
 
-            loss, outputs = rnn.train(Variable(input.float()), Variable(target.float()))
+            loss, outputs = rnn.train(input.long(), target.long())
             losses.append(loss)
 
             if i % 100 is 0:

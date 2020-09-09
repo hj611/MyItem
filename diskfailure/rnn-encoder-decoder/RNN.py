@@ -10,7 +10,7 @@ class RNN(object):
         super(RNN, self).__init__()
 
         self.encoder = Encoder(input_size)
-        self.decoder = Decoder()
+        self.decoder = Decoder(input_size)
 
         self.loss = nn.CrossEntropyLoss()
         self.encoder_optimizer = optim.Adam(self.encoder.parameters(), lr = 0.1)
@@ -23,18 +23,14 @@ class RNN(object):
         hidden_state = None
         #Encoder
         #hidden_state = self.encoder.first_hidden()
-        _, hidden_state = self.encoder.forward(input, hidden_state)
+        _, hidden_state = self.encoder.forward(input.long(), hidden_state)
 
 
         #Decoder
-        total_loss, outputs = 0, []
-        for i in range(len(target) - 1):
-            _, softmax, hidden_state = self.decoder.forward(target[i].long(), hidden_state)
+        total_loss, outputs = 0, []  
 
-            outputs.append(np.argmax(softmax.data.numpy(), 1)[:, np.newaxis])
-            total_loss += self.loss(softmax, target[i + 1].squeeze(1))
-
-        total_loss /= len(outputs)
+        _, softmax, hidden_state = self.decoder.forward(input, hidden_state)
+        total_loss = self.loss(softmax.long(), target.long())
         total_loss.backward()
         
 
