@@ -1,0 +1,11 @@
+batch 128 sampler no
+epoch 1, loss 0.3144, train acc 0.999, time 1521.2 sec
+epoch 2, loss 0.3144, train acc 0.999, time 1543.1 sec
+epoch 3, loss 0.3144, train acc 0.999, time 1639.1 sec
+epoch 4, loss 0.3144, train acc 0.999, time 1637.3 sec
+epoch 5, loss 0.3144, train acc 0.999, time 1639.5 sec
+epoch 6, loss 0.3144, train acc 0.999, time 1638.9 sec
+epoch 7, loss 0.3144, train acc 0.999, time 1640.5 sec
+epoch 8, loss 0.3144, train acc 0.999, time 1638.2 sec
+epoch 9, loss 0.3144, train acc 0.999, time 1638.9 sec
+epoch 10, loss 0.3144, train acc 0.999, time 1637.4 sec
