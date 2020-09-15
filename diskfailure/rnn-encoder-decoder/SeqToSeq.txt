@@ -9,3 +9,15 @@ epoch 7, loss 0.3144, train acc 0.999, time 1640.5 sec
 epoch 8, loss 0.3144, train acc 0.999, time 1638.2 sec
 epoch 9, loss 0.3144, train acc 0.999, time 1638.9 sec
 epoch 10, loss 0.3144, train acc 0.999, time 1637.4 sec
+
+batch 128 sampler no
+epoch 1, loss 0.8132, train acc 0.500, time 8378.3 sec
+epoch 2, loss 0.8134, train acc 0.500, time 8487.9 sec
+epoch 3, loss 0.8133, train acc 0.500, time 8595.9 sec
+epoch 4, loss 0.8132, train acc 0.500, time 8568.0 sec
+epoch 5, loss 0.8127, train acc 0.501, time 8458.9 sec
+epoch 6, loss 0.8135, train acc 0.500, time 8575.9 sec
+epoch 7, loss 0.8135, train acc 0.500, time 8561.9 sec
+epoch 8, loss 0.8132, train acc 0.500, time 8626.6 sec
+epoch 9, loss 0.8132, train acc 0.500, time 8602.4 sec
+epoch 10, loss 0.8129, train acc 0.500, time 8598.7 sec
