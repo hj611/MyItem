@@ -3,9 +3,15 @@ import pandas as pd
 import numpy as np 
 
 dataOfBlack_2020_Q1 = []
-dirs = os.listdir('E:/data/data_Q1_2018')
-for i in dirs:
-    dataOfBlack_2020_Q1.append(pd.read_csv('E:/data/data_Q1_2018/' + i))
+
+data = pd.read_hdf('E:/data/final_BlackBlaze_Q1_Q2_Q3.h5')
+date = list(data['date'].value_counts().index)
+date.sort()
+print(date)
+for i in date:
+    dataOfBlack_2020_Q1.append(data[data['date'] == i])
+
+
 
 listOfpositiveSample = []
 for i in range(5, len(dataOfBlack_2020_Q1)):
@@ -18,4 +24,4 @@ for i in range(5, len(dataOfBlack_2020_Q1)):
 
 positiveSample = pd.concat(listOfpositiveSample, ignore_index=True)
 
-positiveSample.to_csv('E:/data/positiveSample_Q1.csv')
+positiveSample.to_csv('E:/data/positiveSample.csv')
